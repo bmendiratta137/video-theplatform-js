@@ -76,6 +76,18 @@ export default class ThePlatformTracker extends nrvideo.VideoTracker {
     return this.muted
   }
 
+  getInstrumentationProvider() {
+    return 'New Relic';
+  }
+
+  getInstrumentationName() {
+    return this.getPlayerName();
+  }
+
+  getInstrumentationVersion() {
+    return this.getPlayerVersion();
+  }
+
   initAdTracker () {
     this.setAdsTracker(new ThePlatformAdsTracker(this.player))
   }

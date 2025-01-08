@@ -223,7 +223,7 @@ export default class ThePlatformTracker extends nrvideo.VideoTracker {
       this.src = e.data.clip.URL || bc.URL
       this.title = e.data.clip.title
       this.duration = e.data.clip.mediaLength
-      this.sendError({ errorMessage: e.data.friendlyMessage, errorDetail: e.data.message })
+      this.sendError({ errorMessage: e.data.friendlyMessage, errorDetail: e.data.message, errorCode: e.data.responseCode, errorName: e.data.title })
     } else { // Ad
       this.sendStart()
     }

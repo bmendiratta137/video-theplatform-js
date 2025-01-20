@@ -69,7 +69,11 @@ export default class ThePlatformTracker extends nrvideo.VideoTracker {
   }
 
   getPlayerVersion () {
-    if ($pdk) return $pdk.version.toString()
+    if ($pdk) {
+      const versionString = $pdk.version.toString();
+      const versionMatch = versionString.match(/^(\d+\.\d+\.\d+)/);
+      return versionMatch ? versionMatch[1] : versionString;
+    }
   }
 
   isMuted () {
@@ -78,6 +82,11 @@ export default class ThePlatformTracker extends nrvideo.VideoTracker {
 
   getInstrumentationProvider() {
     return 'New Relic';
+  }
+
+  getPlayerName() { 
+    if ($pdk.name) return $pdk.name
+    else return 'thePlatform';
   }
 
   getInstrumentationName() {
